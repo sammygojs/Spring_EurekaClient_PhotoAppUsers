@@ -43,7 +43,7 @@ public class UsersController {
 		UserDto userDto = modelMapper.map(userDetails, UserDto.class);
 //		usersService.createUser(userDto);
 		UserDto createdUser = usersService.createUser(userDto);
-		System.out.println(createdUser);
+//		System.out.println(createdUser);
 		
 		CreateUserResponseModel returnValue = modelMapper.map(createdUser, CreateUserResponseModel.class);
 		

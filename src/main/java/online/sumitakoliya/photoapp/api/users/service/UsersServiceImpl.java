@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import online.sumitakoliya.photoapp.api.users.data.UserEntity;
@@ -16,9 +17,12 @@ public class UsersServiceImpl implements UsersService {
 	
 	UsersRepository usersRepository;
 	
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	@Autowired
-	public UsersServiceImpl(UsersRepository usersRepository) {
+	public UsersServiceImpl(UsersRepository usersRepository,BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.usersRepository = usersRepository;
+		this.bCryptPasswordEncoder=bCryptPasswordEncoder;
 	}
 
 	@Override
@@ -30,7 +34,9 @@ public class UsersServiceImpl implements UsersService {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
 		
-		userDetails.setEncryptedPassword(userDetails.getPassword());
+//		userDetails.setEncryptedPassword(userDetails.getPassword());
+		userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
+		
 //		userDetails.setUserId(userDetails);
 		
 		UserEntity userEntity = modelMapper.map(userDetails, UserEntity.class);
