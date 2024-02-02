@@ -1,5 +1,7 @@
 package online.sumitakoliya.photoapp.api.users.ui.model;
 
+import java.util.UUID;
+
 public class CreateUserResponseModel {
 	public String getFirstName() {
 		return firstName;
@@ -22,11 +24,11 @@ public class CreateUserResponseModel {
 	}
 	private String firstName;
 	private String lastName;
-	private Long userId;
-	public Long getUserId() {
+	private UUID userId;
+	public UUID getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
+	public void setUserId(UUID userId) {
 		this.userId = userId;
 	}
 	private String email;

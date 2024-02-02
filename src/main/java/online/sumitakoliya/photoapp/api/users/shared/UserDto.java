@@ -1,6 +1,7 @@
 package online.sumitakoliya.photoapp.api.users.shared;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class UserDto implements Serializable{
 	/**
@@ -11,7 +12,7 @@ public class UserDto implements Serializable{
 	private String lastName;
 	private String email;
 	private String password;
-	private Long userId;
+	private UUID userId;
 	private String encryptedPassword;
 	public String getFirstname() {
 		return firstName;
@@ -37,10 +38,10 @@ public class UserDto implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Long getUserId() {
+	public UUID getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
+	public void setUserId(UUID userId) {
 		this.userId = userId;
 	}
 	public String getEncryptedPassword() {

@@ -1,6 +1,7 @@
 package online.sumitakoliya.photoapp.api.users.data;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class UserEntity implements Serializable {
 	private static final long serialVersionUID = -4901764967780523124L;
 	@Id
 	@GeneratedValue
-	private long id;
+	private UUID id;
 	@Column(nullable=false, length=50)
 	private String firstname;
 	@Column(nullable=false, length=50)
@@ -30,10 +31,10 @@ public class UserEntity implements Serializable {
 	private String userId;
 	@Column(nullable=false, unique=true)
 	private String encryptedPassword;
-	public long getId() {
+	public UUID getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public String getFirstname() {
